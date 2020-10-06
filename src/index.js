@@ -7,6 +7,14 @@ class Clock extends React.Component {
         this.state = {date: new Date()};
     }
 
+    componentDidMount() {
+
+    }
+
+    componentWillUnmount() {
+
+    }
+
     render() {
         return (
             <div>
