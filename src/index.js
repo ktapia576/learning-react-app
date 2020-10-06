@@ -3,16 +3,25 @@ import ReactDOM from 'react-dom';
 
 class Clock extends React.Component {
     constructor(props) {
-        super(props);
+        super(props);   // 'super' keyword is for making super-constructor calls and allows access to parent methods
         this.state = {date: new Date()};
     }
 
-    componentDidMount() {
-
+    componentDidMount() {   // Runs after the component output has been rendered to the DOM
+        this.timerID = setInterval( // this.timerID is setup by React itself. Setinterval() returns an id that can be used to clearInterval()
+            () => this.tick(),
+            1000    
+        );
     }
 
     componentWillUnmount() {
+        clearInterval(this.timerID);
+    }
 
+    tick() {
+        this.setState({
+          date: new Date()
+        }); 
     }
 
     render() {
