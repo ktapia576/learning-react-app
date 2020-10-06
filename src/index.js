@@ -7,8 +7,21 @@ class Welcome extends React.Component {
     }
 }
 
-const element = <Welcome name='Sara' />;
+class App extends React.Component {
+    render () {
+        return (
+            <div>
+                <Welcome name="Sara" />
+                <Welcome name="John" />
+                <Welcome name="Bob" />
+            </div>
+        );
+    }
+}
+
+// ------------------------------------
 
 ReactDOM.render(
-    element, document.getElementById('root')
+    <App />, 
+    document.getElementById('root')
 );
