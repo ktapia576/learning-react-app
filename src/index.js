@@ -8,7 +8,7 @@ class Clock extends React.Component {
     }
 
     componentDidMount() {   // Runs after the component output has been rendered to the DOM
-        this.timerID = setInterval( // this.timerID is setup by React itself. Setinterval() returns an id that can be used to clearInterval()
+        this.timerID = setInterval( // this.props is setup by React itself and this.timerID is setup by me. Setinterval() returns an id that can be used to clearInterval()
             () => this.tick(),
             1000    
         );
