@@ -1,6 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+function ActionLink(props) {
+    function handleClick(e) {
+        e.preventDefault();
+        console.log('The link was clicked!');
+    }
+
+    return (
+        <a href="#" onClick={handleClick}>
+          {props.name}
+        </a>
+    );
+}
+
 class Clock extends React.Component {
     constructor(props) {
         super(props);   // 'super' keyword is for making super-constructor calls and allows access to parent methods
@@ -85,6 +98,7 @@ class App extends React.Component {
                     author={comment.author}
                 />
                 <Clock />
+                <ActionLink name="test"/>
             </div>
         );
     }
