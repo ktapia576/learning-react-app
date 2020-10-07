@@ -1,6 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+function UserGreeting(props){
+    return (
+        <p>
+            Hello, {props.user}
+        </p>
+    );
+}
+
+function GuestGreeting(props){
+    return (
+        <p>
+            Please sign up.
+        </p>
+    );
+}
+
+function Greeting(props){
+    const isLoggedOn = props.isLoggedOn;
+    if(isLoggedOn){
+        return <UserGreeting user={props.user}/>
+    }
+    return <GuestGreeting />
+}
+
 function ActionLink(props) {
     function handleClick(e) {
         e.preventDefault();
@@ -124,7 +148,11 @@ class App extends React.Component {
                 />
                 <Clock />
                 <ActionLink name="test"/>
-                <Toggle />
+                <Toggle /><br />
+                <Greeting 
+                    isLoggedOn={true}   // Set to false for "Please Sign up" component
+                    user={'unic0rns2013'}
+                />
             </div>
         );
     }
