@@ -4,13 +4,13 @@ import ReactDOM from 'react-dom';
 function ActionLink(props) {
     function handleClick(e) {
         e.preventDefault();
-        console.log('The link was clicked!');
+        console.log('The button+ was clicked!');
     }
 
     return (
-        <a href="#" onClick={handleClick}>
+        <button onClick={handleClick}>
           {props.name}
-        </a>
+        </button>
     );
 }
 
@@ -37,7 +37,6 @@ class Toggle extends React.Component {
         );
     }
 }
-
 
 class Clock extends React.Component {
     constructor(props) {
