@@ -19,6 +19,7 @@ class Toggle extends React.Component {
         super(props);
         this.state = {isToggleOn : true};
 
+        //  If you refer to a method without () after it, such as onClick={this.handleClick}, you should bind that method.
         // This binding is necessary to make `this` work in the callback
         this.handleClick = this.handleClick.bind(this);
     }
