@@ -130,17 +130,10 @@ function Comment(props) {
     );
 }
 
-class Welcome extends React.Component {
-    render () {
-        return <h1> Hello, {this.props.name}</h1>;
-    }
-}
-
 class App extends React.Component {
     render () {
         return (
             <div>
-                <Welcome name="Sara" />
                 <Comment 
                     date={comment.date}
                     text={comment.text}
@@ -150,7 +143,7 @@ class App extends React.Component {
                 <ActionLink name="test"/>
                 <Toggle /><br />
                 <Greeting 
-                    isLoggedOn={true}   // Set to false for "Please Sign up" component
+                    isLoggedOn={{isLoggedOn: true}}   // Set to false for "Please Sign up" component
                     user={'unic0rns2013'}
                 />
             </div>
