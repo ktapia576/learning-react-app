@@ -17,9 +17,25 @@ function GuestGreeting(props){
     );
 }
 
+function LogoutButton(props) {
+    return(
+        <button onClick={props.onClick}>
+            Logout
+        </button>
+    );
+}
+
+function LoginButton(props) {
+    return(
+        <button onClick={props.onClick}>
+            Login
+        </button>
+    );
+}
+
 function Greeting(props){
-    const isLoggedOn = props.isLoggedOn;
-    if(isLoggedOn){
+    const isLoggedIn = props.isLoggedIn;
+    if(isLoggedIn){
         return <UserGreeting user={props.user}/>
     }
     return <GuestGreeting />
@@ -36,6 +52,46 @@ function ActionLink(props) {
           {props.name}
         </button>
     );
+}
+
+class LoginControl extends React.Component {
+    constructor(props){
+        super(props);
+    
+        //  If you refer to a method without () after it, such as onClick={this.handleClick}, you should bind that method.
+        // This binding is necessary to make `this` work in the callback
+        this.handleLoginClick = this.handleLoginClick.bind(this);
+        this.handleLogoutClick = this.handleLogoutClick.bind(this);
+        this.state = { isLoggedIn: false};
+    }
+
+    handleLoginClick(){
+        this.setState({isLoggedIn: true});
+    }
+
+    handleLogoutClick(){
+        this.setState({isLoggedIn: false});
+    }
+
+    render() {
+        const isLoggedIn = this.state.isLoggedIn;
+        let button;
+        if(isLoggedIn){
+            button = <LogoutButton onClick={this.handleLogoutClick}/>;
+        } else {
+            button = <LoginButton onClick={this.handleLoginClick}/>
+        }
+
+        return(
+            <div>
+                <Greeting 
+                    isLoggedIn={isLoggedIn}
+                    user = {this.props.user}
+                />
+                {button}
+            </div>
+        );
+    }
 }
 
 class Toggle extends React.Component {
@@ -142,8 +198,7 @@ class App extends React.Component {
                 <Clock />
                 <ActionLink name="test"/>
                 <Toggle /><br />
-                <Greeting 
-                    isLoggedOn={{isLoggedOn: true}}   // Set to false for "Please Sign up" component
+                <LoginControl 
                     user={'unic0rns2013'}
                 />
             </div>
