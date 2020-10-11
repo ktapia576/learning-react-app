@@ -62,7 +62,7 @@ class LoginControl extends React.Component {
         // This binding is necessary to make `this` work in the callback
         this.handleLoginClick = this.handleLoginClick.bind(this);
         this.handleLogoutClick = this.handleLogoutClick.bind(this);
-        this.state = { isLoggedIn: false};
+        this.state = { isLoggedIn: this.props.isLoggedIn};
     }
 
     handleLoginClick(){
@@ -233,6 +233,7 @@ class App extends React.Component {
                 <ActionLink name="test"/>
                 <Toggle /><br />
                 <LoginControl 
+                    isLoggedIn={true}
                     user={'unic0rns2013'}
                 />
                 <Page />
