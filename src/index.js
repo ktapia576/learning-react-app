@@ -254,6 +254,11 @@ class EssayForm extends React.Component {
     }
 }
 
+const scaleNames = {
+    c: 'Celsius',
+    f: 'Fahrenheit'
+};
+
 function BoilingVerdict(props) {
     if (props.celsius >= 100) {
         return <p>The water would boil.</p>;  
